@@ -24,7 +24,7 @@ void closeArea()
 
 void endBenckmark(const std::string& filename)
 {
-
+    /* save to file */
 }
 
 #endif
