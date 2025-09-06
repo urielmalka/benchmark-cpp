@@ -16,7 +16,17 @@ The results are collected and exported to a **CSV file** at the end of the progr
 
 ## 🚀 Usage
 
-### 1. Initialize the benchmark system
+### 1. Start the benchmark area
 ```cpp
-initBenchmark();
+startArea("function's name");
+```
+
+### 2. Close the benchmark area
+```cpp
+closeArea();
+```
+
+### 3. Save results to csv file
+```cpp
+endBenchmark("file.csv");
 ```
