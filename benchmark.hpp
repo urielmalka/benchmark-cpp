@@ -75,14 +75,25 @@ inline void endBenchmark(const std::string& file_name)
     std::ofstream out(file_name);
     if (!out) return;
 
-    out << "task_id,name,start_ticks,end_ticks,duration_ms\n";
+    out << "task_id,name,start_ticks,end_ticks,duration\n";
     for (const auto& [id, t] : tasks) {
+        double ms = t.getDurationMs();
+        int total_ms = static_cast<int>(ms);
+        int minutes  = total_ms / 60000;
+        int seconds  = (total_ms % 60000) / 1000;
+        int millis   = total_ms % 1000;
+
         out << id << ','
             << '"' << t.name << '"' << ','
             << t.start << ','
             << t.end << ','
-            << std::fixed << std::setprecision(3) << t.getDurationMs() << '\n';
+            << std::setfill('0')
+            << std::setw(2) << minutes << ":"
+            << std::setw(2) << seconds << ":"
+            << std::setw(3) << millis
+            << '\n';
     }
 }
+
 
 #endif // BENCHMARK_HPP
